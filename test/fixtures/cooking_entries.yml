@@ -1,0 +1,23 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: MyString
+  meal_category: MyString
+  rating: 1
+  review: MyString
+  string: MyString
+  recipe_id: MyString
+  integer: MyString
+  chef_id: MyString
+  integer: MyString
+
+two:
+  date: MyString
+  meal_category: MyString
+  rating: 1
+  review: MyString
+  string: MyString
+  recipe_id: MyString
+  integer: MyString
+  chef_id: MyString
+  integer: MyString
