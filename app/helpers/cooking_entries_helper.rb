@@ -1,0 +1,2 @@
+module CookingEntriesHelper
+end

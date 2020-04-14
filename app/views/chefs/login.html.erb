@@ -1,0 +1,17 @@
+<h1>Login to Sous Chef</h1>
+
+<%= form_tag "/chefs/login", method: "POST", class: 'form' do %>
+  <%= label_tag :email_address %>
+  <%= text_field_tag :email_address %><br>
+
+  <%= label_tag :password %>
+  <%= password_field_tag :password %><br>
+
+  <% if flash[:error] %>
+    <ul>
+        <li class="error"><%= flash[:error] %></li>
+    </ul>
+  <% end %>
+
+  <%= submit_tag "Login" %>
+<% end %>

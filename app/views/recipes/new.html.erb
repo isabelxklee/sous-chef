@@ -1,0 +1,42 @@
+<div class="card">
+  <%= form_for @recipe, html: { class: "form" } do |f| %>
+    <h1 class="form-header">Create a new recipe</h1>
+
+    <%= f.label "Recipe title" %><br />
+    <%= f.text_field :title %></p>
+
+    Meal Category<br />
+    <%= select_tag :meal_category, options_for_select(Recipe::Categories) %>
+
+    <h3>Include up to 5 ingredients</h3></p>
+
+    <% 5.times do %>
+        <%= f.fields_for :ingredients, @recipe.ingredients.build do |ingredient| %>
+            <%= ingredient.label "Ingredient Name" %><br />
+            <%= ingredient.text_field :name %><br />
+        
+            <%= ingredient.label :quantity %><br />
+            <%= ingredient.text_field :quantity %></p>
+        <% end %>
+    <% end %>
+
+    <h3>Include up to 5 Cooking steps</h3></p>
+
+    <% 5.times do %>
+        <%= f.fields_for :cooking_steps, @recipe.cooking_steps.build do |step| %>
+            <%= step.label "Cooking step" %><br />
+            <%= step.text_area :content %><br />
+        <% end %>
+    <% end %>
+
+    <% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= f.submit "Create recipe", class: "button" %>
+  <% end %>
+</div>
