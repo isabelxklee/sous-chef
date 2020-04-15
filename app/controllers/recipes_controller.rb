@@ -16,9 +16,16 @@ class RecipesController < ApplicationController
     end
 
     def create
-        @recipe = Recipe.create(recipe_params)
-        @logged_in_chef.recipes << @recipe
-        redirect_to @recipe
+        @recipe = @logged_in_chef.recipes.create(recipe_params)
+        if @recipe.valid?
+            redirect_to @recipe
+        else
+            flash[:errors] = @recipe.errors.full_messages
+            redirect_to new_recipe_path
+        end
+        # @recipe = Recipe.create(recipe_params)
+        # @logged_in_chef.recipes << @recipe
+        # redirect_to @recipe
     end
 
     def show

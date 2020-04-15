@@ -2,6 +2,7 @@
 
 <% if logged_in? && logged_in_chef.id == @chef.id %>
     <%= button_to "Create a new recipe", new_recipe_path, :method => "get" %>
+    <%= button_to "Log a new cooking entry", new_entry_path, :method => "get" %>
     <%= button_to "Edit profile", edit_chef_path(@chef), method: :get, class: "button" %>
     <%= button_to "Close account", @chef, method: :delete, class: "button" %>
     <%= button_to "Logout", logout_path, method: :post, class: "button" %>
@@ -29,7 +30,9 @@
         <%= link_to entry.recipe.title, recipe_path(entry.recipe) %><br>
         Date: <%= entry.date %><br>
         "<%= entry.review %>"<br>
-        <%= entry.rating %>/10<br>
+        <%= entry.rating %>/5<br>
+        <%= button_to "Edit", edit_cooking_entry_path(entry), method: :get, class: "button" %>
+        <%= button_to "Delete", delete_entry_path, method: :delete, class: "button" %>
         </li><br>
     <% end %>
 </ul>

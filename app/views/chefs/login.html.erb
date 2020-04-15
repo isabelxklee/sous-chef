@@ -1,17 +1,20 @@
-<h1>Login to Sous Chef</h1>
+<div class="card">
+  <%= button_to "Go back", root_path, :method => "get" %>
+  
+  <h1>Login to Sous Chef</h1>
+  <%= form_tag "/chefs/login", method: "POST", class: 'form' do %>
+    <%= label_tag :email_address %>
+    <%= text_field_tag :email_address %><br>
 
-<%= form_tag "/chefs/login", method: "POST", class: 'form' do %>
-  <%= label_tag :email_address %>
-  <%= text_field_tag :email_address %><br>
+    <%= label_tag :password %>
+    <%= password_field_tag :password %><br>
 
-  <%= label_tag :password %>
-  <%= password_field_tag :password %><br>
+    <% if flash[:error] %>
+      <ul>
+          <li class="error"><%= flash[:error] %></li>
+      </ul>
+    <% end %>
 
-  <% if flash[:error] %>
-    <ul>
-        <li class="error"><%= flash[:error] %></li>
-    </ul>
+    <%= submit_tag "Login" %>
   <% end %>
-
-  <%= submit_tag "Login" %>
-<% end %>
+</div>

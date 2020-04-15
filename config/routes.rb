@@ -1,15 +1,6 @@
 Rails.application.routes.draw do
 
   root 'welcome#home'
-  # get 'ingredients/new'
-  # get 'ingredients/create'
-  # get 'ingredients/edit'
-  # get 'ingredients/update'
-  # get 'ingredients/destroy'
-  # get 'cooking_steps/new'
-  # get 'cooking_steps/create'
-  # get 'cooking_steps/edit'
-  # get 'cooking_steps/update'
 
   ############## chef routes ##############
   get "signup", to: "chefs#new", as: "signup"
@@ -35,11 +26,10 @@ Rails.application.routes.draw do
 
   ############## cooking entry routes ##############
 
-  # get '/recipes', to: 'recipes#index', as: 'recipes'
-  # get '/recipes/new', to: 'recipes#new', as: 'new_recipe'
-  # post '/recipes', to: 'recipes#create'
+  get '/cooking_entries/new', to: 'cooking_entries#new', as: 'new_entry'
+  post '/cooking_entries', to: 'cooking_entries#create'
   get '/cooking_entries/:id', to: 'cooking_entries#show', as: 'cooking_entry'
-  # get '/recipes/:id/edit', to: 'recipes#edit', as: 'edit_recipe'
-  # patch '/recipes/:id', to: 'recipes#update'
-  # delete '/recipes/:id', to: 'recipes#destroy'
+  get '/cooking_entries/:id/edit', to: 'cooking_entries#edit', as: 'edit_cooking_entry'
+  patch '/cooking_entries/:id', to: 'cooking_entries#update'
+  delete '/cooking_entries/:id', to: 'cooking_entries#delete', as: 'delete_entry'
 end

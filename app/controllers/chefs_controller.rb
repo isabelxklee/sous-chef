@@ -43,6 +43,7 @@ class ChefsController < ApplicationController
   end
 
   def show
+    puts @logged_in_chef
   end
 
   def edit
@@ -55,7 +56,7 @@ class ChefsController < ApplicationController
 
   def destroy
     @chef.destroy
-    redirect_to new_chef_path
+    redirect_to controller: 'welcome', action: 'home'
   end
 
   private
