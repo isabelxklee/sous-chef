@@ -1,4 +1,5 @@
 <div class="card">
+  <%= button_to "Never mind, I have an existing account", chef_login_path, :method => "get" %>
   <%= form_for @chef, html: { class: "form" } do |f| %>
     <h2 class="form-header">Create an account</h2>
 

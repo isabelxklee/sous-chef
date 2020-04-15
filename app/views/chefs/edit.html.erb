@@ -1,2 +1,32 @@
-<h1>Chefs#edit</h1>
-<p>Find me in app/views/chefs/edit.html.erb</p>
+<div class="card">
+  
+  <%= form_for @chef, html: { class: "form" } do |f| %>
+    <h2 class="form-header">Edit profile</h2>
+
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %><br>
+
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %><br>
+
+    <%= f.label :email_address %>
+    <%= f.text_field :email_address %><br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %><br>
+
+    <%= f.label "Confirm password" %>
+    <%= f.password_field :password_confirmation %><br>
+
+    <% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= f.submit "Save", class: "button" %>
+  <% end %>
+
+</div>

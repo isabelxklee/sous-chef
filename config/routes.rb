@@ -1,10 +1,21 @@
 Rails.application.routes.draw do
 
+  root 'welcome#home'
+  # get 'ingredients/new'
+  # get 'ingredients/create'
+  # get 'ingredients/edit'
+  # get 'ingredients/update'
+  # get 'ingredients/destroy'
+  # get 'cooking_steps/new'
+  # get 'cooking_steps/create'
+  # get 'cooking_steps/edit'
+  # get 'cooking_steps/update'
+
   ############## chef routes ##############
   get "signup", to: "chefs#new", as: "signup"
   get '/chefs/login', to: 'chefs#login', as: 'chef_login'
   post '/chefs/login', to: 'chefs#handle_login'
-  post '/logout', to: 'chefs#logout'
+  post '/logout', to: 'chefs#logout', as: 'logout'
 
   post '/chefs/', to: 'chefs#create'
   get '/chefs/:id', to: 'chefs#show', as: 'chef'

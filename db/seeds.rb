@@ -32,3 +32,6 @@ recipe.ingredients_attributes={"0"=>{"name"=>"cilantro", "quantity"=>"1/2 bunch"
 recipe.save
 
 CookingEntry.create(date: Faker::Date.backward(days: 30), rating: Faker::Number.between(from: 1, to: 5), review: Faker::Lorem.paragraph, recipe_id: recipe.id, chef_id: Chef.all.sample.id)
+
+# recipe = Recipe.create(title: "Bread Pudding", chef_id: Chef.all.sample.id, meal_category: "Side")
+# isabel = Chef.find_by(first_name: "isabel")

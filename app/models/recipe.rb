@@ -8,4 +8,5 @@ class Recipe < ApplicationRecord
 
     Categories = ["Appetizer", "Entrée", "Dessert", "Side", "Snack", "Beverage"]
     validates :meal_category, inclusion: Categories
+
 end

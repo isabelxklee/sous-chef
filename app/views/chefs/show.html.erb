@@ -3,7 +3,8 @@
 <% if logged_in? && logged_in_chef.id == @chef.id %>
     <%= button_to "Create a new recipe", new_recipe_path, :method => "get" %>
     <%= button_to "Edit profile", edit_chef_path(@chef), method: :get, class: "button" %>
-    <%= button_to "Delete account", @chef, method: :delete, class: "button" %>
+    <%= button_to "Close account", @chef, method: :delete, class: "button" %>
+    <%= button_to "Logout", logout_path, method: :post, class: "button" %>
 <% end %>
 
 <h4>Recipes created</h4>

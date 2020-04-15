@@ -1,6 +1,11 @@
 <h1><%= @recipe.title %></h1>
 <h3>Created by <%= link_to "Chef #{@recipe.chef.first_name} #{@recipe.chef.last_name}", chef_path(@recipe.chef) %></h3>
 
+<% if logged_in? && @logged_in_chef.id == @recipe.chef.id %>
+      <%= button_to "Edit recipe", edit_recipe_path(@recipe), method: :get, class: "button" %>
+      <%= button_to "Delete recipe", @recipe, method: :delete, class: "button" %>
+<% end %>
+
 <h4>Meal category: <%= @recipe.meal_category %></h4>
 <h4>Ingredients</h4>
 <ul>
@@ -23,10 +28,13 @@
 </ol>
 
 <h4>Reviews</h4>
-<% @recipe.cooking_entries.each do |entry| %>
-    <%= link_to "Chef #{entry.chef.first_name} #{entry.chef.last_name}", chef_path(entry.chef) %><br>
-    Date: <%= entry.date %><br>
-    "<%= entry.review %>"<br>
-    <%= entry.rating %>/10<br>
-    
+<% if @recipe.cooking_entries.length > 0 %> 
+    <% @recipe.cooking_entries.each do |entry| %>
+        <%= link_to "Chef #{entry.chef.first_name} #{entry.chef.last_name}", chef_path(entry.chef) %><br>
+        Date: <%= entry.date %><br>
+        "<%= entry.review %>"<br>
+        <%= entry.rating %>/10<br>
+    <% end %>
+<% else %>
+    This recipe doesn't have any reviews yet.
 <% end %>

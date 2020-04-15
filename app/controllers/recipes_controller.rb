@@ -15,12 +15,25 @@ class RecipesController < ApplicationController
     end
 
     def create
-        @recipe = @logged_in_chef.recipes.create(recipe_params)
+        @recipe = Recipe.create(recipe_params)
+        @logged_in_chef.recipes << @recipe
         redirect_to @recipe
     end
 
     def show
         find_recipe
+    end
+
+    def edit
+        find_recipe
+    end
+
+    def update
+        @recipe.update(recipe_params)
+        redirect_to @recipe
+    end
+
+    def destroy
     end
 
     private
@@ -29,6 +42,6 @@ class RecipesController < ApplicationController
     end
 
     def recipe_params
-        params.require(:recipe).permit(:title, :chef_id, ingredients_attributes: [:name, :quantity])
+        params.require(:recipe).permit(:title, :chef_id, ingredients_attributes: [:name, :quantity], cooking_steps_attributes: [:content])
     end
 end

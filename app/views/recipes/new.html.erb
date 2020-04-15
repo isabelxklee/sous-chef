@@ -5,11 +5,14 @@
     <%= f.label "Recipe title" %><br />
     <%= f.text_field :title %></p>
 
+    <%= f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
+
     Meal Category<br />
     <%= select_tag :meal_category, options_for_select(Recipe::Categories) %>
 
-    <h3>Include up to 5 ingredients</h3></p>
-
+<%
+=begin%>
+    <h3>Add your ingredients</h3></p>
     <% 5.times do %>
         <%= f.fields_for :ingredients, @recipe.ingredients.build do |ingredient| %>
             <%= ingredient.label "Ingredient Name" %><br />
@@ -28,6 +31,7 @@
             <%= step.text_area :content %><br />
         <% end %>
     <% end %>
+=end%>
 
     <% if flash[:errors] %>
       <ul>

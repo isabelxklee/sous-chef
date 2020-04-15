@@ -1,5 +1,6 @@
 class ChefsController < ApplicationController
   before_action :check_to_see_if_someones_logged_in, only: [:edit, :update, :destroy]
+  before_action :set_chef, only: [:edit, :update]
 
   #################### session actions ####################
 
@@ -20,7 +21,7 @@ class ChefsController < ApplicationController
 
   def logout
     session[:chef_id] = nil
-    redirect_to chef_login_path
+    redirect_to controller: 'welcome', action: 'home'
   end
 
   #################### model actions ####################
@@ -42,26 +43,26 @@ class ChefsController < ApplicationController
   end
 
   def show
-    find_chef
+    set_chef
   end
 
   def edit
-    find_chef
+    set_chef
   end
 
   def update
     @chef.update(chef_params)
-    redirect_to chef_path(@chef)
+    redirect_to @chef
   end
 
   def destroy
-    find_chef
+    set_chef
     @chef.destroy
     redirect_to new_chef_path
   end
 
   private
-  def find_chef
+  def set_chef
     @chef = Chef.find(params[:id])
   end
 
