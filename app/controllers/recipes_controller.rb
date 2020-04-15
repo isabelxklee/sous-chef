@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
     before_action :check_to_see_if_someones_logged_in
+    before_action :set_recipe, only: [:show, :edit, :update, :destroy]
 
     # def ingredient_attributes=(ingredient)
     #     self.ingredient = Ingredient.find_or_create_byśname: ingredient[:name], quantity: ingredient[:quantity])
@@ -21,11 +22,9 @@ class RecipesController < ApplicationController
     end
 
     def show
-        find_recipe
     end
 
     def edit
-        find_recipe
     end
 
     def update
@@ -34,10 +33,12 @@ class RecipesController < ApplicationController
     end
 
     def destroy
+        @recipe.destroy
+        redirect_to recipes_path
     end
 
     private
-    def find_recipe
+    def set_recipe
         @recipe = Recipe.find(params[:id])
     end
 

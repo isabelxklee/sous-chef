@@ -1,6 +1,6 @@
 class ChefsController < ApplicationController
   before_action :check_to_see_if_someones_logged_in, only: [:edit, :update, :destroy]
-  before_action :set_chef, only: [:edit, :update]
+  before_action :set_chef, only: [:show, :edit, :update, :destroy]
 
   #################### session actions ####################
 
@@ -43,11 +43,9 @@ class ChefsController < ApplicationController
   end
 
   def show
-    set_chef
   end
 
   def edit
-    set_chef
   end
 
   def update
@@ -56,7 +54,6 @@ class ChefsController < ApplicationController
   end
 
   def destroy
-    set_chef
     @chef.destroy
     redirect_to new_chef_path
   end
