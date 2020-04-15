@@ -30,9 +30,9 @@
         <%= link_to entry.recipe.title, recipe_path(entry.recipe) %><br>
         Date: <%= entry.date %><br>
         "<%= entry.review %>"<br>
-        <%= entry.rating %>/5<br>
+        <%= entry.rating %><br>
         <%= button_to "Edit", edit_cooking_entry_path(entry), method: :get, class: "button" %>
-        <%= button_to "Delete", delete_entry_path, method: :delete, class: "button" %>
+        <%= button_to "Delete", delete_entry_path(entry), method: :delete, class: "button" %>
         </li><br>
     <% end %>
 </ul>

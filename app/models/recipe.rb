@@ -7,6 +7,6 @@ class Recipe < ApplicationRecord
     accepts_nested_attributes_for :ingredients, :cooking_steps
 
     Categories = ["Appetizer", "Entrée", "Dessert", "Side", "Snack", "Beverage"]
-    validates :meal_category, inclusion: Categories
+    validates :meal_category, inclusion: Categories, presence: true
 
 end

@@ -10,6 +10,7 @@
 
     Rating<br />
     <%= select_tag :rating, options_for_select(CookingEntry::Ratings) %>
+    <% # if integer == 5, 5.times do 💖end %>
 
     <%= f.label "Review (maximum 500 characters)" %><br />
     <%= f.text_area :review %><br />

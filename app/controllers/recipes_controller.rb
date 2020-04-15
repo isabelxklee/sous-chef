@@ -13,19 +13,22 @@ class RecipesController < ApplicationController
 
     def new
         @recipe = Recipe.new
+
+        # allow the user to only add one ingredient and cooking step
+        # AND THEN, display a form on the recipe show page that allows the user to add more ingredients and cooking steps
+        # AND THEN, update the recipe page
+
     end
 
     def create
         @recipe = @logged_in_chef.recipes.create(recipe_params)
+        @recipe.update(meal_category: params[:meal_category])
         if @recipe.valid?
             redirect_to @recipe
         else
             flash[:errors] = @recipe.errors.full_messages
             redirect_to new_recipe_path
         end
-        # @recipe = Recipe.create(recipe_params)
-        # @logged_in_chef.recipes << @recipe
-        # redirect_to @recipe
     end
 
     def show
@@ -41,7 +44,7 @@ class RecipesController < ApplicationController
 
     def destroy
         @recipe.destroy
-        redirect_to recipes_path
+        redirect_to @recipe.chef
     end
 
     private
@@ -50,6 +53,6 @@ class RecipesController < ApplicationController
     end
 
     def recipe_params
-        params.require(:recipe).permit(:title, :chef_id, ingredients_attributes: [:name, :quantity], cooking_steps_attributes: [:content])
+        params.require(:recipe).permit(:title, :chef_id, :meal_category, ingredients_attributes: [:name, :quantity], cooking_steps_attributes: [:content])
     end
 end

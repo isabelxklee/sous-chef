@@ -17,6 +17,10 @@
     <% end %>
 </ul>
 
+<% # include a form here for adding new RecipeIngredient joiner model instances %>
+<% # after the user saves, it's going to the RI controller %>
+<% # THEN, redirect to the recipe show page (recipe_path(@recipeingredient.recipe)) %>
+
 <h4>Cooking steps</h4>
 <ol>
     <% @recipe.cooking_steps.each do |step| %>
