@@ -1,7 +1,6 @@
 <div class="card">
-  <%= button_to "Go back", root_path, :method => "get" %>
   <%= form_for @chef, html: { class: "form" } do |f| %>
-    <h2 class="form-header">Create an account</h2>
+    <h1 class="form-header">Create an account</h1>
 
     <% if flash[:errors] %>
       <ul>
@@ -26,6 +25,9 @@
     <%= f.label "Confirm password" %>
     <%= f.password_field :password_confirmation %><br>
 
-    <%= f.submit "Create", class: "button" %>
+    <div class="btn-group">
+      <%= button_tag "Create", class: "button" %>
+      <%= link_to "<button>Go back</button>".html_safe, root_path, :class => "button", :method => :get %>
+    </div>
   <% end %>
 </div>

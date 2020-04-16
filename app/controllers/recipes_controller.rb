@@ -30,10 +30,8 @@ class RecipesController < ApplicationController
 
     def update
         @recipe.update(meal_category: params[:meal_category])
-        
-        # allow the user to only add one ingredient and cooking step
-        # AND THEN, display a form on the recipe show page that allows the user to add more ingredients and cooking steps
-        # AND THEN, update the recipe page
+        # @recipe.cooking_steps.update(cooking_steps_params)
+        # @recipe.ingredients << params[:recipe][:ingredients_attributes]
         @recipe.update(recipe_params)
         redirect_to @recipe
     end
@@ -47,6 +45,10 @@ class RecipesController < ApplicationController
     def set_recipe
         @recipe = Recipe.find(params[:id])
     end
+
+    # def cooking_steps_params
+    #     params.require(:cooking_steps).permit(:content)
+    # end
 
     def recipe_params
         params.require(:recipe).permit(:title, :chef_id, :meal_category, ingredients_attributes: [:id, :name, :quantity, :_destroy], cooking_steps_attributes: [:id, :content, :_destroy])

@@ -1,7 +1,7 @@
-<div class="card">
+<div class="form">
   
   <%= form_for @chef, html: { class: "form" } do |f| %>
-    <h2 class="form-header">Edit profile</h2>
+    <h1 class="form-header">Edit your profile</h1>
 
     <%= f.label :first_name %>
     <%= f.text_field :first_name %><br>
@@ -27,6 +27,11 @@
     <% end %>
 
     <%= f.submit "Save", class: "button" %>
-  <% end %>
+  <% end %></p>
 
+<hr>
+
+<div class="body">
+<h2>🚨 Do you want to close your account? 🚨</h2>
+<%= button_to "Close account", @chef, method: :delete, class: "button-danger" %></p>
 </div>

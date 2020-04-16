@@ -2,8 +2,10 @@
 <h3>Created by <%= link_to "Chef #{@recipe.chef.first_name} #{@recipe.chef.last_name}", chef_path(@recipe.chef) %></h3>
 
 <% if logged_in? && @logged_in_chef.id == @recipe.chef.id %>
-      <%= button_to "Edit recipe", edit_recipe_path(@recipe), method: :get, class: "button" %>
-      <%= button_to "Delete recipe", @recipe, method: :delete, class: "button" %>
+  <div class="btn-group">
+          <%= link_to "<button>Edit recipe</button>".html_safe, edit_recipe_path(@recipe), method: :get, class: "button" %>
+          <%= link_to "<button>Delete recipe</button>".html_safe, @recipe, method: :delete, class: "button-success" %>
+  </div>
 <% end %></p>
 
 <hr>
@@ -66,11 +68,11 @@
       <% end %>
 
       <%= f.fields_for :ingredients, @recipe.ingredients.build do |ingredient| %>
-              <%= ingredient.label "Ingredient Name" %><br />
-              <%= ingredient.text_field :name %><br />
-          
-              <%= ingredient.label :quantity %><br />
-              <%= ingredient.text_field :quantity %></p>
+        <%= ingredient.label "Ingredient Name" %><br />
+        <%= ingredient.text_field :name %><br />
+    
+        <%= ingredient.label :quantity %><br />
+        <%= ingredient.text_field :quantity %></p>
       <% end %>
       
       <%= f.submit "Add ingredient", class: "button" %></p>
@@ -91,8 +93,8 @@
       <% end %>
 
       <%= f.fields_for :cooking_steps, @recipe.cooking_steps.build do |step| %>
-              <%= step.label "Description" %><br />
-              <%= step.text_area :content %><br />
+        <%= step.label "Description" %><br />
+        <%= step.text_area :content %><br />
       <% end %>
       
       <%= f.submit "Add step", class: "button" %>

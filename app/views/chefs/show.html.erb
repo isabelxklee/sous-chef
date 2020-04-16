@@ -1,39 +1,40 @@
 <h1><%= "Howdy, Chef #{@chef.first_name}!" %></h1>
 
 <% if logged_in? && logged_in_chef.id == @chef.id %>
-    <%= button_to "Create a new recipe", new_recipe_path, :method => "get" %>
-    <%= button_to "Log a new cooking entry", new_entry_path, :method => "get" %>
-    <%= button_to "Edit profile", edit_chef_path(@chef), method: :get, class: "button" %>
-    <%= button_to "Close account", @chef, method: :delete, class: "button" %>
-    <%= button_to "Logout", logout_path, method: :post, class: "button" %>
+    <div class="btn-group">
+        <%= link_to "<button>Create a recipe</button>".html_safe, new_recipe_path, :method => "get", class: "button" %>
+        <%= link_to "<button>Write a cooking review</button>".html_safe, new_entry_path, :method => "get", class: "button" %>
+        <%= link_to "<button>Edit profile</button>".html_safe, edit_chef_path(@chef), method: :get, class: "button" %>
+    </div>
 <% end %>
 
-<h4>Recipes created</h4>
-<% if @chef.recipes.length > 0 %>
-    <ul>
+<div class="body">
+    <h2>Recipes created</h2>
+    <% if @chef.recipes.length > 0 %>
         <% @chef.recipes.each do |recipe| %>
-            <li>
-                <%= link_to recipe.title, recipe_path(recipe) %>
-            </li>
+            <%= link_to recipe.title, recipe_path(recipe) %>
             <br>
-        <% end %>
-    </ul>
-<% else %>
-    This chef hasn't created any recipes yet.
-<% end %>
-
-<h4>Cooking reviews</h4>
-<% if @chef.cooking_entries.length > 0 %>
-    <% @chef.cooking_entries.each do |entry| %>
-        <%= link_to entry.recipe.title, recipe_path(entry.recipe) %><br>
-        Date: <%= entry.date %><br>
-        <% # call the emoji method here %>        
-        Rating: <%= entry.rating %> / 5<br>
-        Review: "<%= entry.review %>"<p>
-        <%= button_to "Edit", edit_cooking_entry_path(entry), method: :get, class: "button" %>
-        <%= button_to "Delete", delete_entry_path(entry), method: :delete, class: "button" %>
-        <br>
     <% end %>
-<% else %>
-    This chef hasn't logged any cooking reviews yet.
-<% end %>
+    <% else %>
+        This chef hasn't created any recipes yet.
+    <% end %>
+</div>
+
+<div class="body">
+    <h2>Cooking reviews</h2>
+    <% if @chef.cooking_entries.length > 0 %>
+        <% @chef.cooking_entries.each do |entry| %>
+            <%= link_to entry.recipe.title, recipe_path(entry.recipe) %><br>
+            Date: <%= entry.date %><br>
+            <% # call the emoji method here %>        
+            Rating: <%= entry.rating %> / 5<br>
+            Review: "<%= entry.review %>"<p>
+            <div class="btn-group">
+                <%= link_to "<button>Edit</button>".html_safe, edit_cooking_entry_path(entry), method: :get, class: "button" %>
+                <%= link_to "<button>Delete</button>".html_safe, delete_entry_path(entry), method: :delete, class: "button" %>
+            </div>
+        <% end %>
+    <% else %>
+        This chef hasn't logged any cooking reviews yet.
+    <% end %>
+</div>

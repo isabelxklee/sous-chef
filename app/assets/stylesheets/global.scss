@@ -1,0 +1,57 @@
+body {
+    font-family: 'Karla', 'Roboto', sans-serif;
+    margin: 0;
+    width: 100vw;
+    max-width: 100%;
+    padding: 0px;
+    overflow-x: hidden;
+}
+
+h1 {
+    margin-top: 75px;
+    font-weight: 700;
+    font-size: 40px;
+}
+
+div .body {
+    margin-top: 50px;
+}
+
+div .form {
+    margin-bottom: 50px;
+}
+  
+.content {
+margin: 10px auto;
+width: 50%;
+}
+
+.clearfix {
+overflow: hidden;
+overflow-x: hidden;
+width: 100%;
+}
+
+.btn-group button {
+    background-color: #B06940;
+    color: white; /* White text */
+    padding: 10px 24px; /* Some padding */
+    cursor: pointer; /* Pointer/hand icon */
+    float: left; /* Float the buttons side by side */
+}
+  
+.btn-group button:not(:last-child) {
+    border-right: none; /* Prevent double borders */
+}
+  
+/* Clear floats (clearfix hack) */
+.btn-group:after {
+content: "";
+clear: both;
+display: table;
+}
+
+/* Add a background color on hover */
+.btn-group button:hover {
+background-color: #884925;
+}
