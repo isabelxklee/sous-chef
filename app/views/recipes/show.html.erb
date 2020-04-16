@@ -11,7 +11,7 @@
 <hr>
 
 <h2>Meal category</h2>
-<%= @recipe.meal_category %></p>
+<h3><%= link_to @recipe.meal_category, recipes_path %></h3>
 
 <div class="body">
 <h2>Ingredients</h2>
@@ -39,14 +39,14 @@
 
 <hr>
 
-<h2>Reviews</h2>
+<h2>Cooking reviews</h2>
 <% if @recipe.cooking_entries.length > 0 %> 
     <% @recipe.cooking_entries.each do |entry| %>
         <h3>By <%= link_to "Chef #{entry.chef.first_name} #{entry.chef.last_name}", chef_path(entry.chef) %></h3>
-        Date: <%= entry.date %><br>
+        <p>Date: <%= entry.date %><br>
         Rating: <%= entry.rating %> / 5<br>
-        Review: "<%= entry.review %>"<p>
+        Review: "<%= entry.review %>"</p>
     <% end %>
 <% else %>
-    This recipe doesn't have any reviews yet.
+    <p>This recipe doesn't have any reviews yet.</p>
 <% end %></p>

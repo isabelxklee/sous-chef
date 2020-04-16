@@ -3,7 +3,7 @@
     <div class="btn-group">
         <%= link_to "<button>Create a recipe</button>".html_safe, new_recipe_path, :method => "get", class: "button" %>
         <%= link_to "<button>Write a cooking review</button>".html_safe, new_entry_path, :method => "get", class: "button" %>
-        <%= link_to "<button>Edit profile</button>".html_safe, edit_chef_path(@chef), method: :get, class: "button" %>
+        <%= link_to "<button-secondary>Edit profile</button>".html_safe, edit_chef_path(@chef), method: :get, class: "button" %>
     </div>
 
 <% else %>
@@ -17,7 +17,7 @@
             <h3><%= link_to recipe.title, recipe_path(recipe) %></h3>
     <% end %>
     <% else %>
-        This chef hasn't created any recipes yet.
+        <p>This chef hasn't created any recipes yet.</p>
     <% end %>
 </div>
 
@@ -26,16 +26,18 @@
     <% if @chef.cooking_entries.length > 0 %>
         <% @chef.cooking_entries.each do |entry| %>
             <h3><%= link_to entry.recipe.title, recipe_path(entry.recipe) %></h3>
-            Date: <%= entry.date %><br>
-            <% # call the emoji method here %>        
-            Rating: <%= entry.rating %> / 5<br>
-            Review: "<%= entry.review %>"<p>
+            <p><b>Date:</b> <%= entry.date %><br>
+            <b>Rating:</b> <%= entry.rating %> / 5<br>
+            <b>Review:</b> "<%= entry.review %>"</p>
+            
+            <% if logged_in? && logged_in_chef.id == @chef.id %>
             <div class="btn-group">
                 <%= link_to "<button>Edit</button>".html_safe, edit_cooking_entry_path(entry), method: :get, class: "button" %>
-                <%= link_to "<button>Delete</button>".html_safe, delete_entry_path(entry), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
+                <%= link_to "<button-secondary>Delete</button>".html_safe, delete_entry_path(entry), method: :delete, data: {confirm: "Are you sure?"}, class: "button" %>
             </div></p>
+            <% end %>
         <% end %>
     <% else %>
-        This chef hasn't logged any cooking reviews yet.
+        <p>This chef hasn't logged any cooking reviews yet.</p>
     <% end %>
 </div>

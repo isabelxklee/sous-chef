@@ -7,4 +7,15 @@ class CookingEntry < ApplicationRecord
     validates :rating, presence: true
     validates :rating, numericality: { greater_than: 0 }
     validates :rating, numericality: { less_than: 6 }
+
+    validate :before_today
+
+    private
+    def before_today
+        today = Time.now
+        if today < date
+          errors.add(:date, "must be in the past.")
+        end
+    end
+
 end

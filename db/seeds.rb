@@ -7,8 +7,6 @@ RecipeIngredient.destroy_all
 CookingEntry.destroy_all
 CookingStep.destroy_all
 
-meal_categories = ["Appetizer", "Entree", "Dessert", "Side", "Snack", "Beverage"]
-
 
 ######### chefs #########
 Chef.create(first_name: "Brad", last_name: "Leone", email_address: "brad@bonappetit.com", password_digest: "123456")
@@ -18,17 +16,32 @@ Chef.create(first_name: "Alison", last_name: "Roman", email_address: "alison@rom
 Chef.create(first_name: "Julia", last_name: "Child", email_address: "julia@child.com", password_digest: "123456")
 
 ######### recipes #########
-Recipe.create(title: "Bucatini Carbonara", chef_id: Chef.all.sample.id, meal_category: meal_categories.sample)
-Recipe.create(title: "New England Lobster Rolls", chef_id: Chef.all.sample.id, meal_category: meal_categories.sample)
-Recipe.create(title: "Grilled Chicken with Lemongrass Sauce", chef_id: Chef.all.sample.id, meal_category: meal_categories.sample)
-Recipe.create(title: "Charred Peppers With Lemon Ricotta and Cucumbers", chef_id: Chef.all.sample.id, meal_category: meal_categories.sample)
-Recipe.create(title: "Grilled Pork Shoulder Steaks With Herb Salad", chef_id: Chef.all.sample.id, meal_category: meal_categories.sample)
+carbonara = Recipe.create(title: "Bucatini Carbonara", chef_id: Chef.all.sample.id, meal_category: Recipe::Categories.sample)
+lobster = Recipe.create(title: "New England Lobster Rolls", chef_id: Chef.all.sample.id, meal_category: Recipe::Categories.sample)
+tofu = Recipe.create(title: "Grilled Tofu with Lemongrass Sauce", chef_id: Chef.all.sample.id, meal_category: Recipe::Categories.sample)
+peppers = Recipe.create(title: "Charred Peppers With Lemon Ricotta and Cucumbers", chef_id: Chef.all.sample.id, meal_category: Recipe::Categories.sample)
+pork = Recipe.create(title: "Grilled Pork Shoulder Steaks With Herb Salad", chef_id: Chef.all.sample.id, meal_category: Recipe::Categories.sample)
 
 ######### ingredients #########
+
 5.times do
     Ingredient.create(name: Faker::Food.ingredient, quantity: Faker::Food.measurement)
-    RecipeIngredient.create(recipe_id: Recipe.all.sample.id, ingredient_id: Ingredient.all.sample.id)
 end
+
+RecipeIngredient.create(recipe_id: carbonara.id, ingredient_id: Ingredient.all.sample.id)
+RecipeIngredient.create(recipe_id: carbonara.id, ingredient_id: Ingredient.all.sample.id)
+
+RecipeIngredient.create(recipe_id: lobster.id, ingredient_id: Ingredient.all.sample.id)
+RecipeIngredient.create(recipe_id: lobster.id, ingredient_id: Ingredient.all.sample.id)
+
+RecipeIngredient.create(recipe_id: tofu.id, ingredient_id: Ingredient.all.sample.id)
+RecipeIngredient.create(recipe_id: tofu.id, ingredient_id: Ingredient.all.sample.id)
+
+RecipeIngredient.create(recipe_id: peppers.id, ingredient_id: Ingredient.all.sample.id)
+RecipeIngredient.create(recipe_id: peppers.id, ingredient_id: Ingredient.all.sample.id)
+
+RecipeIngredient.create(recipe_id: pork.id, ingredient_id: Ingredient.all.sample.id)
+RecipeIngredient.create(recipe_id: pork.id, ingredient_id: Ingredient.all.sample.id)
 
 ######### cooking entries #########
 CookingEntry.create(date: Faker::Date.backward(days: 30), rating: Faker::Number.between(from: 1, to: 5), review: "This is my new favorite dish. Next time, I would add a pinch of salt though!", recipe_id: Recipe.all.sample.id, chef_id: Chef.all.sample.id)
@@ -42,11 +55,11 @@ CookingEntry.create(date: Faker::Date.backward(days: 30), rating: Faker::Number.
 CookingEntry.create(date: Faker::Date.backward(days: 30), rating: Faker::Number.between(from: 1, to: 5), review: "Delightful! Next time I would add twice the amount of spices and add a pinch of garlic salt.", recipe_id: Recipe.all.sample.id, chef_id: Chef.all.sample.id)
 
 ######### cooking steps #########
-CookingStep.create(recipe_id: Recipe.all.sample.id, content: "Pre-heat the oven to 425 degrees.")
-CookingStep.create(recipe_id: Recipe.all.sample.id, content: "Chop all the ingredients.")
-CookingStep.create(recipe_id: Recipe.all.sample.id, content: "Sautée the main protein on high heat. Let it rest for 5 minutes after taking out of the pan.")
-CookingStep.create(recipe_id: Recipe.all.sample.id, content: "Drizzle on the sauce and serve!")
-CookingStep.create(recipe_id: Recipe.all.sample.id, content: "Marinate the protein.")
+CookingStep.create(recipe_id: carbonara.id, content: "Pre-heat the oven to 425 degrees.")
+CookingStep.create(recipe_id: lobster.id, content: "Chop all the ingredients.")
+CookingStep.create(recipe_id: tofu.id, content: "Sautée the tofu on high heat. Let it rest for 5 minutes after taking out of the pan.")
+CookingStep.create(recipe_id: peppers.id, content: "Drizzle on the sauce and serve!")
+CookingStep.create(recipe_id: pork.id, content: "Marinate the pork for 12 hours.")
 
 
 # 5.times do

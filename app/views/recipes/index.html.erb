@@ -6,10 +6,10 @@
 
 <div class="body">
     <% Recipe::Categories.each do |category| %>
-        <h2><%= category.pluralize(2) %></h2>
+        <h2><%= category %></h2>
         <% @recipes.each do |recipe| %>
             <% if category == recipe.meal_category %>
-                <%= link_to recipe.title, recipe_path(recipe) %><br>
+                <h3><%= link_to recipe.title, recipe_path(recipe) %></h3>
             <% end %>
         <% end %><br>
     <% end %>

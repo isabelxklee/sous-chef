@@ -9,6 +9,7 @@ body {
 
 a {
     color: #B06940;
+    background: rgb(255, 244, 238);
 }
 
 a:hover {
@@ -21,6 +22,14 @@ h1 {
     margin-top: 75px;
     font-weight: 700;
     font-size: 40px;
+}
+
+li {
+    font-size: 1.17em;
+}
+
+p {
+    font-size: 1.17em;
 }
 
 div .body {
