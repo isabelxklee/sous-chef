@@ -43,5 +43,9 @@
     <%= yield %>
   </div>
 
+<% if logged_in? %>
+  <div class="footer"><p>👩🏻‍🍳💫 Track your cooking progress with Sous Chef. 💫👩🏻‍🍳</p></div>
+<% end %>
+  
   </body>
 </html>
