@@ -33,5 +33,5 @@
 
 <div class="body">
 <h2>🚨 Do you want to close your account? 🚨</h2>
-<%= button_to "Close account", @chef, method: :delete, class: "button-danger" %></p>
+<%= button_to "Close account", @chef, method: :delete, data: {confirm: "Are you sure?"}, class: "button-danger" %></p>
 </div>

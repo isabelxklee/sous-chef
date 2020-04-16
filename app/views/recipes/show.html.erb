@@ -4,16 +4,17 @@
 <% if logged_in? && @logged_in_chef.id == @recipe.chef.id %>
   <div class="btn-group">
           <%= link_to "<button>Edit recipe</button>".html_safe, edit_recipe_path(@recipe), method: :get, class: "button" %>
-          <%= link_to "<button>Delete recipe</button>".html_safe, @recipe, method: :delete, class: "button-success" %>
+          <%= link_to "<button>Delete recipe</button>".html_safe, @recipe, method: :delete, data: {confirm: "Are you sure?"}, class: "button-success" %>
   </div>
 <% end %></p>
 
 <hr>
 
-<h4>Meal category</h4>
+<h2>Meal category</h2>
 <%= @recipe.meal_category %></p>
 
-<h4>Ingredients</h4>
+<div class="body">
+<h2>Ingredients</h2>
 <ul>
     <% @recipe.ingredients.each do |ingredient| %>
         <li>
@@ -22,8 +23,10 @@
         <br>
     <% end %>
 </ul>
+</div>
 
-<h4>Cooking steps</h4>
+<div class="body">
+<h2>Cooking steps</h2>
 <ol>
     <% @recipe.cooking_steps.each do |step| %>
         <li>
@@ -32,72 +35,18 @@
         <br>
     <% end %>
 </ol>
+</div>
 
-<h4>Reviews</h4>
+<hr>
+
+<h2>Reviews</h2>
 <% if @recipe.cooking_entries.length > 0 %> 
     <% @recipe.cooking_entries.each do |entry| %>
-        <%= link_to "Chef #{entry.chef.first_name} #{entry.chef.last_name}", chef_path(entry.chef) %><br>
+        <h3>By <%= link_to "Chef #{entry.chef.first_name} #{entry.chef.last_name}", chef_path(entry.chef) %></h3>
         Date: <%= entry.date %><br>
-        "<%= entry.review %>"<br>
-        <%= entry.rating %>/10<br>
+        Rating: <%= entry.rating %> / 5<br>
+        Review: "<%= entry.review %>"<p>
     <% end %>
 <% else %>
     This recipe doesn't have any reviews yet.
 <% end %></p>
-
-<hr>
-
-<% ################# more forms ################# %>
-<% # include a form here for adding new RecipeIngredient joiner model instances %>
-<% # after the user saves, it's going to the RI controller %>
-<% # THEN, redirect to the recipe show page (recipe_path(@recipeingredient.recipe)) %>
-
-<% if logged_in? && @logged_in_chef == @recipe.chef %>
-    
-  <%= form_for @recipe, html: { class: "form" } do |f| %>
-    
-  <% ###### ingredient ###### %>
-
-    <h4 class="form-header">Add another ingredient</h4>
-      <% if flash[:errors] %>
-        <ul>
-          <% flash[:errors].each do |error| %>
-            <li class="error"><%= error %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <%= f.fields_for :ingredients, @recipe.ingredients.build do |ingredient| %>
-        <%= ingredient.label "Ingredient Name" %><br />
-        <%= ingredient.text_field :name %><br />
-    
-        <%= ingredient.label :quantity %><br />
-        <%= ingredient.text_field :quantity %></p>
-      <% end %>
-      
-      <%= f.submit "Add ingredient", class: "button" %></p>
-      <% end %>
-
-  <hr>
-
-  <% ###### cooking step ###### %>
-
-  <%= form_for @recipe, html: { class: "form" } do |f| %>
-      <h4 class="form-header">Add another cooking step</h4>
-      <% if flash[:errors] %>
-        <ul>
-          <% flash[:errors].each do |error| %>
-            <li class="error"><%= error %></li>
-          <% end %>
-        </ul>
-      <% end %>
-
-      <%= f.fields_for :cooking_steps, @recipe.cooking_steps.build do |step| %>
-        <%= step.label "Description" %><br />
-        <%= step.text_area :content %><br />
-      <% end %>
-      
-      <%= f.submit "Add step", class: "button" %>
-  <% end %>
-
-<% end %>

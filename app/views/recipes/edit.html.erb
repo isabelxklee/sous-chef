@@ -14,7 +14,8 @@
     <%= f.text_field :title %></p>
 
     Meal Category<br />
-    <%= select_tag :meal_category, options_for_select(Recipe::Categories) %>
+    <%= f.select(:meal_category, Recipe::Categories) %>
+
 
     <h3>Ingredient</h3></p>
         <%= f.fields_for :ingredients do |ingredient| %>
@@ -33,6 +34,35 @@
             Remove step: <%= step.check_box :_destroy %></p>
     <% end %>
 
-    <%= f.submit "Save changes", class: "button" %>
+  <%= f.submit "Save changes", class: "button" %>
+<% end %>
+
+<hr>
+
+<% ############### add another ingredient ############ %>
+
+<%= form_for @recipe, html: { class: "form" } do |f| %>
+  <h3>Add another ingredient</h3></p>
+      <%= f.fields_for :ingredients, @recipe.ingredients.build do |ingredient| %>
+        <%= ingredient.label "Ingredient Name" %><br />
+        <%= ingredient.text_field :name %><br />
+    
+        <%= ingredient.label :quantity %><br />
+        <%= ingredient.text_field :quantity %></p>
+      <% end %>
+
+    <%= f.submit "Save new ingredient", class: "button" %>
+  <% end %>
+
+<% ############### add another cooking step ############ %>
+
+<%= form_for @recipe, html: { class: "form" } do |f| %>
+  <h3>Add another cooking step</h3></p>
+      <%= f.fields_for :cooking_steps, @recipe.cooking_steps.build do |step| %>
+        <%= step.label "Description" %><br />
+        <%= step.text_area :content %><br />
+      <% end %>
+
+    <%= f.submit "Save new cooking step", class: "button" %>
   <% end %>
 </div>
