@@ -1,0 +1,29 @@
+footer {
+    background: rgb(242, 242, 242);
+    padding: 10px;
+    margin-top: 100px;
+    bottom: 0;
+    width: 100vw;
+
+    a {
+        text-decoration: none;
+        font-weight: bold;
+        color: rgb(28, 28, 28);
+    }
+
+    a:hover { 
+        text-decoration: none;
+        color: rgba(28, 28, 28, 0.25);
+    }
+
+    p {
+        text-align: center;
+        text-decoration: none;
+        color: rgb(52, 52, 52);
+        font-size: 16px;
+    }
+}
+
+.message {
+    padding: 0%;
+}

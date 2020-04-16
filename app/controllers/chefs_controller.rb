@@ -38,7 +38,7 @@ class ChefsController < ApplicationController
       redirect_to @chef
     else
       flash[:errors] = @chef.errors.full_messages
-      redirect_to new_chef_path
+      redirect_to signup_path
     end
   end
 
@@ -65,7 +65,7 @@ class ChefsController < ApplicationController
   end
 
   def chef_params
-    params.require(:chef).permit(:first_name, :last_name, :email_address, :password)
+    params.require(:chef).permit(:first_name, :last_name, :email_address, :password, :password_confirmation)
   end
 
   # def emoji_translator(entry)

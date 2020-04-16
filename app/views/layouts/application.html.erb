@@ -12,7 +12,6 @@
   </head>
 
   <body>
-  
   <% if logged_in? %>
     <header class='clearfix'>
 
@@ -36,16 +35,20 @@
     </header>
 
   <% else %>
-  <header class='clearfix'><p>👩🏻‍🍳💫 Let's get ready to cook! 💫👩🏻‍🍳</p></header>
+    <header class='clearfix'><p>👩🏻‍🍳💫 Let's get ready to cook! 💫👩🏻‍🍳</p></header>
   <% end %>
 
   <div class='content'>
     <%= yield %>
   </div>
 
-<% if logged_in? %>
-  <div class="footer"><p>👩🏻‍🍳💫 Track your cooking progress with Sous Chef. 💫👩🏻‍🍳</p></div>
-<% end %>
+  <% if logged_in? %>
+    <footer class='clearfix'>
+      <div class="message">
+          <p>👩🏻‍🍳💫 Track your cooking progress with <a href="https://github.com/isabelxklee/sous-chef", target="_blank">Sous Chef</a>. Built with love and sweat by <a href="https://www.kleetime.com", target="_blank">Isabel K. Lee</a>. 💫👩🏻‍🍳</p>
+      </div>
+    </footer>
+  <% end %>
   
   </body>
 </html>

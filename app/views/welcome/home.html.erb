@@ -1,3 +1,6 @@
 <h1>Welcome to Sous Chef!</h1>
-<%= button_to "Login", chef_login_path, :method => "get" %>
-<%= button_to "Create an account", signup_path, :method => "get" %>
+
+<div class="btn-group">
+        <%= link_to "<button>Login</button>".html_safe, chef_login_path, :method => "get", class: "button" %>
+        <%= link_to "<button-secondary>Create an account</button>".html_safe, signup_path, :method => "get", class: "button" %>
+</div>

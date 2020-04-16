@@ -1,4 +1,4 @@
-<div class="form">
+<div class="card">
   
   <%= form_for @chef, html: { class: "form" } do |f| %>
     <h1 class="form-header">Edit your profile</h1>
@@ -31,7 +31,6 @@
 
 <hr>
 
-<div class="body">
 <h2>🚨 Do you want to close your account? 🚨</h2>
 <%= button_to "Close account", @chef, method: :delete, data: {confirm: "Are you sure?"}, class: "button-danger" %></p>
 </div>
