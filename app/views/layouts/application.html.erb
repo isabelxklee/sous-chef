@@ -11,6 +11,32 @@
   </head>
 
   <body>
+  
+  <% if logged_in? %>
+    <header class='clearfix'>
+      <div class="nav">
+        <ul>
+          <li><%= link_to "View all recipes", recipes_path %></li>
+        </ul>
+      </div>
+
+      <div class="nav">
+        <ul>
+          <li><%= link_to "My profile", @logged_in_chef %></li>
+        </ul>
+      </div>
+
+      <div class="nav">
+        <ul>
+          <li><%= link_to "Logout", logout_path, method: :post %></li>
+        </ul>
+      </div>
+    </header>
+  <% end %>
+
+  <div class='content'>
     <%= yield %>
+  </div>
+
   </body>
 </html>

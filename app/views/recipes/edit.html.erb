@@ -1,0 +1,38 @@
+<div class="card">
+  <%= form_for @recipe, html: { class: "form" } do |f| %>
+    <h1 class="form-header">Create a new recipe</h1>
+
+    <% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <%= f.label "Recipe title" %><br />
+    <%= f.text_field :title %></p>
+
+    Meal Category<br />
+    <%= select_tag :meal_category, options_for_select(Recipe::Categories) %>
+
+    <h3>Ingredient</h3></p>
+        <%= f.fields_for :ingredients do |ingredient| %>
+            <%= ingredient.label "Ingredient Name" %><br />
+            <%= ingredient.text_field :name %>
+        
+            <%= ingredient.label :quantity %><br />
+            <%= ingredient.text_field :quantity %>
+            Remove ingredient: <%= ingredient.check_box :_destroy %></p>
+    <% end %>
+
+    <h3>Cooking step</h3></p>
+        <%= f.fields_for :cooking_steps do |step| %>
+            <%= step.label "Description" %><br />
+            <%= step.text_area :content %><br />
+            Remove step: <%= step.check_box :_destroy %></p>
+    <% end %>
+
+    <%= f.submit "Save changes", class: "button" %>
+  <% end %>
+</div>

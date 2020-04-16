@@ -2,18 +2,6 @@
   <%= form_for @entry, html: { class: "form" } do |f| %>
     <h1 class="form-header">Log a new cooking entry</h1>
 
-    <%= f.label :recipe_id %><br />
-    <%= f.collection_select :recipe_id, Recipe.all, :id, :title %></p>
-
-    <%= f.label "Date cooked" %><br />
-    <%= f.text_field :date %><br />
-
-    Rating<br />
-    <%= select_tag :rating, options_for_select(CookingEntry::Ratings) %>
-
-    <%= f.label "Review (maximum 500 characters)" %><br />
-    <%= f.text_area :review %><br />
-    
     <% if flash[:errors] %>
       <ul>
         <% flash[:errors].each do |error| %>
@@ -21,6 +9,18 @@
         <% end %>
       </ul>
     <% end %>
+
+    <%= f.label :recipe_id %><br />
+    <%= f.collection_select :recipe_id, Recipe.all, :id, :title %></p>
+
+    <%= f.label "Date cooked" %><br />
+    <%= f.text_field :date %><br />
+
+    <%= f.label :rating %><br />
+    <%= f.text_field :rating %><br />
+
+    <%= f.label "Review (maximum 500 characters)" %><br />
+    <%= f.text_area :review %><br />
 
     <%= f.submit "Save", class: "button" %>
   <% end %>

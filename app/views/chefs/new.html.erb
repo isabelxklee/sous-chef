@@ -3,6 +3,14 @@
   <%= form_for @chef, html: { class: "form" } do |f| %>
     <h2 class="form-header">Create an account</h2>
 
+    <% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <%= f.label :first_name %>
     <%= f.text_field :first_name %><br>
 
@@ -17,14 +25,6 @@
 
     <%= f.label "Confirm password" %>
     <%= f.password_field :password_confirmation %><br>
-
-    <% if flash[:errors] %>
-      <ul>
-        <% flash[:errors].each do |error| %>
-          <li class="error"><%= error %></li>
-        <% end %>
-      </ul>
-    <% end %>
 
     <%= f.submit "Create", class: "button" %>
   <% end %>

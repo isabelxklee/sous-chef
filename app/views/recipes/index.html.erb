@@ -1,8 +1,8 @@
 <h1>All Recipes</h1>
-<%= link_to "Create a new recipe", new_recipe_path %><br><br>
+<%= button_to "Create a new recipe", new_recipe_path, :method => "get" %><br><br>
 
 <% Recipe::Categories.each do |category| %>
-    <%= category.pluralize(2) %><br>
+    <h2><%= category.pluralize(2) %></h2>
     <% @recipes.each do |recipe| %>
         <% if category == recipe.meal_category %>
             <%= link_to recipe.title, recipe_path(recipe) %><br>

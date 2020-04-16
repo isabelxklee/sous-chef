@@ -5,11 +5,8 @@
     <%= f.label "Recipe title" %><br />
     <%= f.text_field :title %></p>
 
-    <% # f.collection_check_boxes :ingredient_ids, Ingredient.all, :id, :name %>
-
     Meal Category<br />
     <%= select_tag :meal_category, options_for_select(Recipe::Categories) %>
-    <% # f.collection_select :meal_category, Recipe::Categories %>
 
     <h3>Ingredient</h3></p>
         <%= f.fields_for :ingredients, @recipe.ingredients.build do |ingredient| %>

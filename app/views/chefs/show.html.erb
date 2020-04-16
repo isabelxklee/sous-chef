@@ -1,4 +1,4 @@
-<h1><%= "Howdy Chef #{@chef.first_name}!" %></h1>
+<h1><%= "Howdy, Chef #{@chef.first_name}!" %></h1>
 
 <% if logged_in? && logged_in_chef.id == @chef.id %>
     <%= button_to "Create a new recipe", new_recipe_path, :method => "get" %>
@@ -24,18 +24,16 @@
 
 <h4>Cooking reviews</h4>
 <% if @chef.cooking_entries.length > 0 %>
-<ul>
     <% @chef.cooking_entries.each do |entry| %>
-        <li>
         <%= link_to entry.recipe.title, recipe_path(entry.recipe) %><br>
         Date: <%= entry.date %><br>
-        "<%= entry.review %>"<br>
-        <%= entry.rating %><br>
+        <% # call the emoji method here %>        
+        Rating: <%= entry.rating %> / 5<br>
+        Review: "<%= entry.review %>"<p>
         <%= button_to "Edit", edit_cooking_entry_path(entry), method: :get, class: "button" %>
         <%= button_to "Delete", delete_entry_path(entry), method: :delete, class: "button" %>
-        </li><br>
+        <br>
     <% end %>
-</ul>
 <% else %>
     This chef hasn't logged any cooking reviews yet.
 <% end %>

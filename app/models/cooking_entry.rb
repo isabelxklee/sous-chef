@@ -5,6 +5,6 @@ class CookingEntry < ApplicationRecord
     validates :date, presence: true 
     validates :review, presence: true, length: { maximum: 500 }
     validates :rating, presence: true
-    validates :rating, numericality: { greater_than_or_equal_to 1 }
-    validates :rating, numericality: { less_than_or_equal_to 5 }
+    validates :rating, numericality: { greater_than: 0 }
+    validates :rating, numericality: { less_than: 6 }
 end

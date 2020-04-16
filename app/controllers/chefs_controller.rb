@@ -43,7 +43,7 @@ class ChefsController < ApplicationController
   end
 
   def show
-    puts @logged_in_chef
+    # emoji_translator(entry)
   end
 
   def edit
@@ -67,4 +67,11 @@ class ChefsController < ApplicationController
   def chef_params
     params.require(:chef).permit(:first_name, :last_name, :email_address, :password)
   end
+
+  # def emoji_translator(entry)
+  #   entry.rating.times do
+  #     💖
+  #   end
+  # end
+
 end
