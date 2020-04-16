@@ -5,7 +5,7 @@
     <%= f.label :recipe_id %><br />
     <%= f.collection_select :recipe_id, Recipe.all, :id, :title %></p>
 
-    <%= f.label "Date cooked" %><br />
+    <%= f.label "Date cooked"%> <br> <%= "(Example format: April 20, 2020)" %><br />
     <%= f.text_field :date %><br />
 
     <%= f.label :rating %><br />
