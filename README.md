@@ -4,10 +4,6 @@
 Sous Chef is a web app that allows you to create new recipes and track your cooking history. Made by [Isabel K. Lee](https://www.kleetime.com).
 
 ![Chef profile on Sous Chef](https://i.imgur.com/yUztOWu.png)
-##### Chef profile
-
-![All recipes on Sous Chef](https://i.imgur.com/3Il5wwM.png)
-##### All recipes
 
 ## Getting Started
 
@@ -16,6 +12,8 @@ Sous Chef is a web app that allows you to create new recipes and track your cook
 3. Run `rails db:migrate` to create the database.
 4. Run `rails db:seed` to seed the database with some auto-generated data.
 5. Run `rails s` to start the app!
+
+![All recipes on Sous Chef](https://i.imgur.com/3Il5wwM.png)
 
 ## Features
 
