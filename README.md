@@ -21,21 +21,16 @@ Sous Chef is a web app that allows you to create new recipes and track your cook
 
 ## Tech Stack
 
-Ruby on Rails
-
-SQLite
-
-HTML/CSS
+* Ruby on Rails
+* SQLite
+* HTML/CSS
 
 ## Tools
 
-[Faker](https://github.com/faker-ruby/faker): fake data generator
-
-[Date](https://github.com/ruby/date): easy way to handle date objects
-
-[CSS Theme](https://kognise.github.io/water.css/): classless CSS theme
-
-[BCrypt](https://github.com/codahale/bcrypt-ruby): password hashing function to securely store passwords
+* [Faker](https://github.com/faker-ruby/faker): fake data generator
+* [Date](https://github.com/ruby/date): easy way to handle date objects
+* [CSS Theme](https://kognise.github.io/water.css/): classless CSS theme
+* [BCrypt](https://github.com/codahale/bcrypt-ruby): password hashing function to securely store passwords
 
 ========================
 
