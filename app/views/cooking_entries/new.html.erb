@@ -1,9 +1,17 @@
 <div class="card">
   <%= form_for @entry, html: { class: "form" } do |f| %>
-    <h1 class="form-header">Log a new cooking entry</h1>
+    <h1 class="form-header">Write a cooking review</h1>
+
+    <% if flash[:errors] %>
+      <ul>
+        <% flash[:errors].each do |error| %>
+          <li class="error"><%= error %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
     <%= f.label :recipe_id %><br />
-    <%= f.collection_select :recipe_id, Recipe.all, :id, :title %></p>
+    <%= f.collection_select :recipe_id, @other_recipes, :id, :title %></p>
 
     <%= f.label "Date cooked"%> <br> <%= "(Example format: April 20, 2020)" %><br />
     <%= f.text_field :date %><br />
@@ -13,15 +21,7 @@
 
     <%= f.label "Review (maximum 500 characters)" %><br />
     <%= f.text_area :review %><br />
-    
-    <% if flash[:errors] %>
-      <ul>
-        <% flash[:errors].each do |error| %>
-          <li class="error"><%= error %></li>
-        <% end %>
-      </ul>
-    <% end %>
 
-    <%= f.submit "Create cooking entry", class: "button" %>
+    <%= f.submit "Create review", class: "button" %>
   <% end %>
 </div>

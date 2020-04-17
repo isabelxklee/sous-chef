@@ -4,7 +4,7 @@
 <% if logged_in? && @logged_in_chef.id == @recipe.chef.id %>
   <div class="btn-group">
           <%= link_to "<button>Edit recipe</button>".html_safe, edit_recipe_path(@recipe), method: :get, class: "button" %>
-          <%= link_to "<button>Delete recipe</button>".html_safe, @recipe, method: :delete, data: {confirm: "Are you sure?"}, class: "button-success" %>
+          <%= link_to "<button-secondary>Delete recipe</button>".html_safe, @recipe, method: :delete, data: {confirm: "Are you sure?"}, class: "button-success" %>
   </div>
 <% end %></p>
 

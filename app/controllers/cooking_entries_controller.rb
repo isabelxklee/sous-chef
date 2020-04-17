@@ -7,6 +7,7 @@ class CookingEntriesController < ApplicationController
     end
 
     def new
+        other_chefs_recipes
         @entry = CookingEntry.new
         @errors = flash[:errors]
     end
@@ -22,6 +23,7 @@ class CookingEntriesController < ApplicationController
     end
 
     def edit
+        other_chefs_recipes
     end
 
     def update
@@ -47,5 +49,9 @@ class CookingEntriesController < ApplicationController
     def convert_time(datetime)
         @date = datetime.strftime("%B %d, %Y")
         @time = datetime.strftime("%I:%M %p")
+    end
+
+    def other_chefs_recipes
+        @other_recipes = Recipe.all - @logged_in_chef.recipes
     end
 end

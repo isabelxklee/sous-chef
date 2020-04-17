@@ -1,6 +1,6 @@
 <div class="card">
   <%= form_for @entry, html: { class: "form" } do |f| %>
-    <h1 class="form-header">Log a new cooking entry</h1>
+    <h1 class="form-header">Edit your cooking review</h1>
 
     <% if flash[:errors] %>
       <ul>
@@ -11,7 +11,7 @@
     <% end %>
 
     <%= f.label :recipe_id %><br />
-    <%= f.collection_select :recipe_id, Recipe.all, :id, :title %></p>
+    <%= f.collection_select :recipe_id, @other_recipes, :id, :title %></p>
 
     <%= f.label "Date cooked" %><br />
     <%= f.text_field :date %><br />

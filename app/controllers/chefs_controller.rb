@@ -43,7 +43,6 @@ class ChefsController < ApplicationController
   end
 
   def show
-    # emoji_translator(entry)
   end
 
   def edit
