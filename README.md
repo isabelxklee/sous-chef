@@ -13,8 +13,6 @@ Sous Chef is a web app that allows you to create new recipes and track your cook
 4. Run `rails db:seed` to seed the database with some auto-generated data.
 5. Run `rails s` to start the app!
 
-
-
 ## Features
 
 * Login or create an account
@@ -30,7 +28,7 @@ Sous Chef is a web app that allows you to create new recipes and track your cook
 ## Tech Stack
 
 * Ruby on Rails
-* SQLite
+* PostgreSQL
 * HTML/CSS
 
 ## Tools
