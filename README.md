@@ -23,6 +23,8 @@ Sous Chef is a web app that allows you to create new recipes and track your cook
 
 ![All recipes on Sous Chef](https://i.imgur.com/3Il5wwM.png)
 
+## Domain Model
+![Domain model](https://i.imgur.com/YVzmeaR.png)
 
 
 ## Tech Stack
@@ -30,6 +32,7 @@ Sous Chef is a web app that allows you to create new recipes and track your cook
 * Ruby on Rails
 * PostgreSQL
 * HTML/CSS
+* Active Record
 
 ## Tools
 
