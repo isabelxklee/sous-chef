@@ -1,29 +1,33 @@
 💫👩🏻‍🍳 Sous Chef 👩🏻‍🍳💫
 ========================
 
-Sous Chef is a web app that allows you to create new recipes and track your cooking history. Built using Ruby on Rails. Made by [Isabel K. Lee](https://www.kleetime.com).
+Sous Chef is a web app that allows you to create new recipes and track your cooking history. Made by [Isabel K. Lee](https://www.kleetime.com).
 
-## Getting Started
+Live demo: https://souschef-app.herokuapp.com
 
-1. Clone this repository onto your local machine.
-2. Run `bundle install` to download all the necessary gems.
-3. Run `rails db:migrate` to create the database.
-4. Run `rails db:seed` to seed the database with some auto-generated data.
-5. Run `rails s` to start the app!
+![Chef profile on Sous Chef](https://i.imgur.com/yUztOWu.png)
 
 ## Features
 
 * Login or create an account
+* Password authentication built using BCrypt
 * Create recipes
 * See other chef's profiles
 * See all existing recipes
 * Log cooking reviews
 
+![All recipes on Sous Chef](https://i.imgur.com/3Il5wwM.png)
+
+## Domain Model
+![Domain model](https://i.imgur.com/YVzmeaR.png)
+
+
 ## Tech Stack
 
 * Ruby on Rails
-* SQLite
+* PostgreSQL
 * HTML/CSS
+* Active Record
 
 ## Tools
 
@@ -32,4 +36,6 @@ Sous Chef is a web app that allows you to create new recipes and track your cook
 * [CSS Theme](https://kognise.github.io/water.css/): classless CSS theme
 * [BCrypt](https://github.com/codahale/bcrypt-ruby): password hashing function to securely store passwords
 
-### ⭐️🍜 Thanks for visiting, hope you enjoyed Sous Chef! 🍜⭐️
+========================
+
+⭐️🍜 Thanks for visiting! 🍜⭐️
