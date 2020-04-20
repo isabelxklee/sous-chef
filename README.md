@@ -10,6 +10,7 @@ Live demo: https://souschef-app.herokuapp.com
 ## Features
 
 * Login or create an account
+* Password authentication built using BCrypt
 * Create recipes
 * See other chef's profiles
 * See all existing recipes
