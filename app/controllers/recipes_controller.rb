@@ -13,7 +13,6 @@ class RecipesController < ApplicationController
     def create
         @recipe = @logged_in_chef.recipes.create(recipe_params)
         @recipe.update(meal_category: params[:meal_category])
-        byebug
         if @recipe.valid?
             redirect_to @recipe
         else
