@@ -21,7 +21,7 @@ Live demo: https://souschef-app.herokuapp.com
 * Visit other users' cooking profiles
 
 ### ActiveRecord Associations
-* Models have `has_many`, `belongs_to` and `has_many through` associations
+* There are 5 models have `has_many`, `belongs_to` and `has_many through` associations
 
 ### Other Features
 * Global datetime conversion using conditional formatting and regex
