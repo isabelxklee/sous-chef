@@ -14,6 +14,7 @@ Live demo: https://souschef-app.herokuapp.com
 * Authenticate the user's password with BCrypt, a Ruby gem that encrypts passwords
 
 ### CRUD Operations
+* Validates inputs and displays error messages for all models
 * Logged in users can create recipes
 * They can write reviews for other users' recipes
 * Browse all recipes by category
