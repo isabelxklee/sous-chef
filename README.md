@@ -20,7 +20,7 @@ Live demo: https://souschef-app.herokuapp.com
 * Visit other users' cooking profiles
 
 ### ActiveRecord Associations
-* Models have has_many, belongs_to and has_many through associations
+* Models have `has_many`, `belongs_to` and `has_many` through associations
 
 ### Other Features
 * Global datetime conversion using conditional formatting and regex
@@ -47,4 +47,4 @@ Live demo: https://souschef-app.herokuapp.com
 * [BCrypt](https://github.com/codahale/bcrypt-ruby): password hashing function to securely store passwords
 
 
-⭐️🍜 Thanks for visiting! 🍜⭐️
+### ⭐️🍜 Thanks for visiting! 🍜⭐️
